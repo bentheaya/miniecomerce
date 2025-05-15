@@ -1,0 +1,26 @@
+name: CI/CD Pipeline
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: |
+          pip install -r user/requirements.txt
+      - name: Run Django tests
+        run: |
+          cd user
+          python manage.py test
+      - name: Build Docker images
+        run: |
+          docker-compose build
+      - name: Push to Docker Hub (simulated)
+        run: echo "Pushing to Docker Hub (configure secrets for real deployment)"

@@ -1,0 +1,48 @@
+.
+|-- .github
+|   `-- workflows
+|       `-- ci-cd.yml
+|-- docker-compose.yml
+|-- order
+|   |-- manage.py
+|   `-- order
+|       |-- __init__.py
+|       |-- asgi.py
+|       |-- settings.py
+|       |-- urls.py
+|       `-- wsgi.py
+|-- product
+|   |-- manage.py
+|   `-- product
+|       |-- __init__.py
+|       |-- asgi.py
+|       |-- settings.py
+|       |-- urls.py
+|       `-- wsgi.py
+|-- project-tree.txt
+`-- user
+    |-- Dockerfile
+    |-- manage.py
+    |-- requirements.txt
+    |-- user
+    |   |-- __init__.py
+    |   |-- __pycache__
+    |   |   |-- __init__.cpython-312.pyc
+    |   |   `-- settings.cpython-312.pyc
+    |   |-- asgi.py
+    |   |-- settings.py
+    |   |-- urls.py
+    |   `-- wsgi.py
+    `-- users
+        |-- __init__.py
+        |-- admin.py
+        |-- apps.py
+        |-- migrations
+        |   `-- __init__.py
+        |-- models.py
+        |-- serializers.py
+        |-- tests.py
+        |-- urls.py
+        `-- views.py
+
+11 directories, 34 files
