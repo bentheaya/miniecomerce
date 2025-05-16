@@ -54,6 +54,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Check tar and Git
+        run: |
+          echo $PATH
+          which git
+          git --version
+          which tar
+          tar --version
+
       - name: Install Fly CLI
         run: |
           curl -L https://fly.io/install.sh | sh
