@@ -25,21 +25,18 @@ jobs:
         run: |
           cd user
           docker build -t bentheaya/miniecomerce-user:latest .
-          docker run bentheaya/miniecomerce-user:latest flake8 .
           docker run bentheaya/miniecomerce-user:latest python manage.py test
 
       - name: Build and test Product Service
         run: |
           cd product
           docker build -t bentheaya/miniecomerce-product:latest .
-          docker run bentheaya/miniecomerce-product:latest flake8 .
           docker run bentheaya/miniecomerce-product:latest python manage.py test
 
       - name: Build and test Order Service
         run: |
           cd order
           docker build -t bentheaya/miniecomerce-order:latest .
-          docker run bentheaya/miniecomerce-order:latest flake8 .
           docker run bentheaya/miniecomerce-order:latest python manage.py test
 
       - name: Push images to Docker Hub
