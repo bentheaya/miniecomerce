@@ -54,7 +54,10 @@ jobs:
 
       - name: Install Fly CLI
         run: |
-          curl -L https://fly.io/install.sh | sh -s -- -b /usr/local/bin
+          curl -L https://github.com/superfly/flyctl/releases/latest/download/flyctl_Linux_x86_64.tar.gz -o flyctl.tar.gz
+          tar -xzf flyctl.tar.gz
+          sudo mv flyctl /usr/local/bin/flyctl
+          rm flyctl.tar.gz
           flyctl version || { echo "flyctl installation failed"; exit 1; }
 
       - name: Deploy User Service to Fly.io
