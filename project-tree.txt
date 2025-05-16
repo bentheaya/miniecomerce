@@ -1,48 +1,288 @@
 .
+|-- .git
+|   |-- COMMIT_EDITMSG
+|   |-- HEAD
+|   |-- config
+|   |-- description
+|   |-- fsmonitor--daemon
+|   |   `-- cookies
+|   |-- hooks
+|   |   |-- applypatch-msg.sample
+|   |   |-- commit-msg.sample
+|   |   |-- fsmonitor-watchman.sample
+|   |   |-- post-update.sample
+|   |   |-- pre-applypatch.sample
+|   |   |-- pre-commit.sample
+|   |   |-- pre-merge-commit.sample
+|   |   |-- pre-push.sample
+|   |   |-- pre-rebase.sample
+|   |   |-- pre-receive.sample
+|   |   |-- prepare-commit-msg.sample
+|   |   |-- push-to-checkout.sample
+|   |   |-- sendemail-validate.sample
+|   |   `-- update.sample
+|   |-- index
+|   |-- info
+|   |   `-- exclude
+|   |-- logs
+|   |   |-- HEAD
+|   |   `-- refs
+|   |       |-- heads
+|   |       |   `-- main
+|   |       `-- remotes
+|   |           `-- origin
+|   |               `-- main
+|   |-- objects
+|   |   |-- 07
+|   |   |   |-- 7cb9908721de1075b039dc0cb9447a701d9bec
+|   |   |   `-- a1f91848974c6435c71426dc7e8a2a88ffd79f
+|   |   |-- 10
+|   |   |   `-- 15952db7d44eb9eb98ffbd295f845a8b1929ca
+|   |   |-- 11
+|   |   |   `-- c8ad06ba941b5ffd70af602af4de5bce6a8378
+|   |   |-- 14
+|   |   |   `-- 5a2ac9e46cefda86c5e849c38a12b8fe7941bb
+|   |   |-- 15
+|   |   |   `-- ef25eb7817118296c71aa430d997636fce9ea4
+|   |   |-- 1a
+|   |   |   `-- 227dab7368c666a4f26b996c26556e0e1586ea
+|   |   |-- 1c
+|   |   |   `-- 1985c91088ecab3ab448bd200417d6e9f95b66
+|   |   |-- 21
+|   |   |   `-- 2e10c4d19adabbd9b2fae1eaeb90dffed12b12
+|   |   |-- 23
+|   |   |   `-- 4d09c8e176a1f591f6ce7041cd37ffdbb14855
+|   |   |-- 24
+|   |   |   `-- cf22d560c7ee0da0bc2a077db08a8ee2941eca
+|   |   |-- 27
+|   |   |   `-- 2e3467007e17fa632a2f7d9d59e50e98e3d0fd
+|   |   |-- 2d
+|   |   |   `-- bee5c3a440762d7ee3936639d557538801c465
+|   |   |-- 31
+|   |   |   `-- 41d5c6452c05be447544c6d3b1d597c610a7f4
+|   |   |-- 32
+|   |   |   `-- 7add99ddc106d32e53463d87570ee41de671d3
+|   |   |-- 41
+|   |   |   `-- a7761ad4bf0dfc103623824f6f5e922c9fe27b
+|   |   |-- 48
+|   |   |   `-- d25307262d274f516af7d03f005b953969d101
+|   |   |-- 4b
+|   |   |   `-- 6ebdb53ac416b00d6c088e5ab8040fdd4f8b39
+|   |   |-- 63
+|   |   |   `-- d7c85b949ec4977debf1d97776a9d5e40eb384
+|   |   |-- 65
+|   |   |   `-- b5e05fb0f3bb0857b8ebf7b39fcc04bde9469d
+|   |   |-- 68
+|   |   |   `-- bf6b061353fac7b2fefe942d43b4fe2489014b
+|   |   |-- 69
+|   |   |   `-- 49f8b9cdd384b08c4b3589efcc8becb4125c22
+|   |   |-- 6b
+|   |   |   `-- 1e56735ea17a8b3306722dab92d03765d49189
+|   |   |-- 6f
+|   |   |   `-- 7bc8ebdede4640ea7503e37e00dbba7bf89b40
+|   |   |-- 72
+|   |   |   `-- b1401065bff121d2e3c31231a5ad2dd5239171
+|   |   |-- 73
+|   |   |   `-- 2540e179fee678d734ed7541b0228df316da5b
+|   |   |-- 75
+|   |   |   `-- da87282d204c20d320012a582e9d97dc30f3f0
+|   |   |-- 76
+|   |   |   `-- 4e6050529571755e7553a08f96681b893e35dd
+|   |   |-- 7b
+|   |   |   `-- 379783d29d26357b18e324bab73424fd70122e
+|   |   |-- 7c
+|   |   |   `-- e503c2dd97ba78597f6ff6e4393132753573f6
+|   |   |-- 7d
+|   |   |   `-- 0a00b9082e326025284cdef384dbd2db8ff57e
+|   |   |-- 88
+|   |   |   `-- 853a5a0984250758f7ce7b5aff9795858ea809
+|   |   |-- 90
+|   |   |   |-- e07a233fe8344f4491418caf12b131889017dc
+|   |   |   `-- f1467f2deeac732074f0f48b54af1534a278a6
+|   |   |-- 91
+|   |   |   `-- 88980dcb12ba8a166ca2dc7f0f41edd19074ee
+|   |   |-- 9b
+|   |   |   `-- 3f4c834920474ed75db334a9632971c800c4f9
+|   |   |-- a9
+|   |   |   `-- c5af6c19170514e19ab77b3c300a073da6e4ca
+|   |   |-- aa
+|   |   |   `-- bd4b624d3fb3d03bd478efccd21d2d4221a713
+|   |   |-- af
+|   |   |   `-- 47ee67acb8b1db7530a05c5bd229ad1560ef53
+|   |   |-- b2
+|   |   |   `-- ee08c8506d432c8651ebf68f67d4578f295ed4
+|   |   |-- b3
+|   |   |   `-- 02b8e11e6f2a1646fca10fa973ce8d9b595915
+|   |   |-- b6
+|   |   |   `-- 23deacec35e8b41b3b3cd16575898425c3a941
+|   |   |-- b9
+|   |   |   `-- 5fb1967d0295823b668a3f4eff8673ee7ebe4d
+|   |   |-- bd
+|   |   |   `-- d903536cd4c3ff8d6565e92ab53fd08550c739
+|   |   |-- be
+|   |   |   `-- 2458e352cd41df6d068843a449dcd5f2e6b147
+|   |   |-- c2
+|   |   |   `-- d1c95692ede03505660beef09f223563f27a48
+|   |   |-- c3
+|   |   |   `-- f8027ed017ebb88060b5d48861b799ebda88f4
+|   |   |-- c4
+|   |   |   `-- dd39d92be0fef85f6318b2a6b610c5defb1a87
+|   |   |-- c5
+|   |   |   `-- 5197d1308bd568a614a94cd367fbc47a3ee5eb
+|   |   |-- c6
+|   |   |   `-- 5fff862cbae522dc064fc90afcfc0866087f0b
+|   |   |-- cb
+|   |   |   `-- 1a026676bdf3379a44eed29b1f1ef8a95cb52d
+|   |   |-- d8
+|   |   |   `-- 1e725e32f181e85aaf56d449cd8a662041d875
+|   |   |-- df
+|   |   |   `-- 565d33e5dde9f492ef6d942c7be48c45cbada1
+|   |   |-- e0
+|   |   |   `-- 51e8b60cde4b63f5dd2b90c5865da5731fcac8
+|   |   |-- e6
+|   |   |   `-- 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+|   |   |-- e8
+|   |   |   `-- fc3c14d299dc26bcc0c7846e5e8cc918415645
+|   |   |-- ea
+|   |   |   `-- c5efd20d8f71e73455341fa6ffbac41b667eaa
+|   |   |-- ee
+|   |   |   `-- af76663797f6868984377f66c3f91d31e0cf1c
+|   |   |-- f3
+|   |   |   `-- 5137326a1d6060541c97141825fe2e559187dc
+|   |   |-- f4
+|   |   |   `-- 0ce4c24cf452d523772cf3aadd1984e406a458
+|   |   |-- f7
+|   |   |   `-- 62f9b96bfb2853c066157fdf314c8fca65d32c
+|   |   |-- f8
+|   |   |   `-- 6f6ea80183a4b075af9d54741f148300648ddb
+|   |   |-- info
+|   |   `-- pack
+|   `-- refs
+|       |-- heads
+|       |   `-- main
+|       |-- remotes
+|       |   `-- origin
+|       |       `-- main
+|       `-- tags
 |-- .github
 |   `-- workflows
 |       `-- ci-cd.yml
+|-- .gitignore
 |-- docker-compose.yml
 |-- order
+|   |-- Dockerfile
+|   |-- database.db
 |   |-- manage.py
-|   `-- order
-|       |-- __init__.py
-|       |-- asgi.py
-|       |-- settings.py
-|       |-- urls.py
-|       `-- wsgi.py
+|   |-- order
+|   |   |-- __init__.py
+|   |   |-- __pycache__
+|   |   |   |-- __init__.cpython-312.pyc
+|   |   |   |-- settings.cpython-312.pyc
+|   |   |   `-- urls.cpython-312.pyc
+|   |   |-- asgi.py
+|   |   |-- settings.py
+|   |   |-- urls.py
+|   |   `-- wsgi.py
+|   |-- orders
+|   |   |-- __init__.py
+|   |   |-- __pycache__
+|   |   |   |-- __init__.cpython-312.pyc
+|   |   |   |-- admin.cpython-312.pyc
+|   |   |   |-- apps.cpython-312.pyc
+|   |   |   |-- models.cpython-312.pyc
+|   |   |   |-- serializers.cpython-312.pyc
+|   |   |   |-- urls.cpython-312.pyc
+|   |   |   `-- views.cpython-312.pyc
+|   |   |-- admin.py
+|   |   |-- apps.py
+|   |   |-- migrations
+|   |   |   |-- 0001_initial.py
+|   |   |   |-- __init__.py
+|   |   |   `-- __pycache__
+|   |   |       |-- 0001_initial.cpython-312.pyc
+|   |   |       `-- __init__.cpython-312.pyc
+|   |   |-- models.py
+|   |   |-- serializers.py
+|   |   |-- tests.py
+|   |   |-- urls.py
+|   |   `-- views.py
+|   `-- requirements.txt
 |-- product
+|   |-- Dockerfile
+|   |-- database.db
 |   |-- manage.py
-|   `-- product
-|       |-- __init__.py
-|       |-- asgi.py
-|       |-- settings.py
-|       |-- urls.py
-|       `-- wsgi.py
+|   |-- product
+|   |   |-- __init__.py
+|   |   |-- __pycache__
+|   |   |   |-- __init__.cpython-312.pyc
+|   |   |   |-- settings.cpython-312.pyc
+|   |   |   `-- urls.cpython-312.pyc
+|   |   |-- asgi.py
+|   |   |-- settings.py
+|   |   |-- urls.py
+|   |   `-- wsgi.py
+|   |-- products
+|   |   |-- __init__.py
+|   |   |-- __pycache__
+|   |   |   |-- __init__.cpython-312.pyc
+|   |   |   |-- admin.cpython-312.pyc
+|   |   |   |-- apps.cpython-312.pyc
+|   |   |   |-- models.cpython-312.pyc
+|   |   |   |-- serializers.cpython-312.pyc
+|   |   |   |-- urls.cpython-312.pyc
+|   |   |   `-- views.cpython-312.pyc
+|   |   |-- admin.py
+|   |   |-- apps.py
+|   |   |-- migrations
+|   |   |   |-- 0001_initial.py
+|   |   |   |-- __init__.py
+|   |   |   `-- __pycache__
+|   |   |       |-- 0001_initial.cpython-312.pyc
+|   |   |       `-- __init__.cpython-312.pyc
+|   |   |-- models.py
+|   |   |-- serializers.py
+|   |   |-- tests.py
+|   |   |-- urls.py
+|   |   `-- views.py
+|   `-- requirements.txt
 |-- project-tree.txt
 `-- user
     |-- Dockerfile
+    |-- database.db
     |-- manage.py
     |-- requirements.txt
     |-- user
     |   |-- __init__.py
     |   |-- __pycache__
     |   |   |-- __init__.cpython-312.pyc
-    |   |   `-- settings.cpython-312.pyc
+    |   |   |-- settings.cpython-312.pyc
+    |   |   `-- urls.cpython-312.pyc
     |   |-- asgi.py
     |   |-- settings.py
     |   |-- urls.py
     |   `-- wsgi.py
     `-- users
         |-- __init__.py
+        |-- __pycache__
+        |   |-- __init__.cpython-312.pyc
+        |   |-- admin.cpython-312.pyc
+        |   |-- apps.cpython-312.pyc
+        |   |-- models.cpython-312.pyc
+        |   |-- serializers.cpython-312.pyc
+        |   |-- urls.cpython-312.pyc
+        |   `-- views.cpython-312.pyc
         |-- admin.py
         |-- apps.py
         |-- migrations
-        |   `-- __init__.py
+        |   |-- 0001_initial.py
+        |   |-- __init__.py
+        |   `-- __pycache__
+        |       |-- 0001_initial.cpython-312.pyc
+        |       `-- __init__.cpython-312.pyc
         |-- models.py
         |-- serializers.py
         |-- tests.py
         |-- urls.py
         `-- views.py
 
-11 directories, 34 files
+101 directories, 184 files

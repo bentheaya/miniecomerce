@@ -5,4 +5,4 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 EXPOSE 8001
-CMD ["gunicorn", "--bind", "0.0.0.0:8001", "user.wsgi:application"]
+CMD ["sh", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:8001 user.wsgi:application"]

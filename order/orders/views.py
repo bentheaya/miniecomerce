@@ -17,7 +17,7 @@ class CreateOrderView(APIView):
 
         # Verify user exists
         try:
-            user_response = requests.get(f'http://user-service:8001/api/users/verify/{user_id}/')
+            user_response = requests.get(f'https://miniecomerce-user.fly.dev/api/users/verify/{user_id}/')
             if user_response.status_code != 200:
                 return Response({"error": "Invalid user"}, status=status.HTTP_400_BAD_REQUEST)
         except requests.RequestException:
@@ -25,7 +25,7 @@ class CreateOrderView(APIView):
 
         # Verify product exists and get price
         try:
-            product_response = requests.get(f'http://product-service:8002/api/products/{product_id}/')
+            product_response = requests.get(f'https://miniecomerce-product.fly.dev/api/products/{product_id}/')
             if product_response.status_code != 200:
                 return Response({"error": "Invalid product"}, status=status.HTTP_400_BAD_REQUEST)
             product_data = product_response.json()

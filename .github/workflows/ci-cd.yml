@@ -1,26 +1,82 @@
 name: CI/CD Pipeline
+
 on:
   push:
     branches:
       - main
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
         with:
-          python-version: '3.9'
-      - name: Install dependencies
-        run: |
-          pip install -r user/requirements.txt
-      - name: Run Django tests
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and test User Service
         run: |
           cd user
-          python manage.py test
-      - name: Build Docker images
+          docker build -t bentheaya/miniecomerce-user:latest .
+          docker run bentheaya/miniecomerce-user:latest flake8 .
+          docker run bentheaya/miniecomerce-user:latest python manage.py test
+
+      - name: Build and test Product Service
         run: |
-          docker-compose build
-      - name: Push to Docker Hub (simulated)
-        run: echo "Pushing to Docker Hub (configure secrets for real deployment)"
+          cd product
+          docker build -t bentheaya/miniecomerce-product:latest .
+          docker run bentheaya/miniecomerce-product:latest flake8 .
+          docker run bentheaya/miniecomerce-product:latest python manage.py test
+
+      - name: Build and test Order Service
+        run: |
+          cd order
+          docker build -t bentheaya/miniecomerce-order:latest .
+          docker run bentheaya/miniecomerce-order:latest flake8 .
+          docker run bentheaya/miniecomerce-order:latest python manage.py test
+
+      - name: Push images to Docker Hub
+        run: |
+          docker push bentheaya/miniecomerce-user:latest
+          docker push bentheaya/miniecomerce-product:latest
+          docker push bentheaya/miniecomerce-order:latest
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Fly CLI
+        run: |
+          curl -L https://fly.io/install.sh | sh
+          export PATH="$HOME/.fly/bin:$PATH"
+
+      - name: Deploy User Service to Fly.io
+        run: |
+          cd user
+          flyctl deploy --app miniecomerce-user --image bentheaya/miniecomerce-user:latest
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      - name: Deploy Product Service to Fly.io
+        run: |
+          cd product
+          flyctl deploy --app miniecomerce-product --image bentheaya/miniecomerce-product:latest
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      - name: Deploy Order Service to Fly.io
+        run: |
+          cd order
+          flyctl deploy --app miniecomerce-order --image bentheaya/miniecomerce-order:latest
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
