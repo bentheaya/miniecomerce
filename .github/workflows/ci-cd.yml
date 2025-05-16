@@ -54,13 +54,12 @@ jobs:
 
       - name: Install Fly CLI
         run: |
-          curl -L -o flyctl.tar.gz https://github.com/superfly/flyctl/releases/download/v0.2.171/flyctl_0.2.171_Linux_x86_64.tar.gz
-          ls -l flyctl.tar.gz
-          file flyctl.tar.gz
-          tar -xzf flyctl.tar.gz
-          sudo mv flyctl /usr/local/bin/flyctl
-          rm flyctl.tar.gz
+          curl -L https://fly.io/install.sh | sh
+          export PATH="/home/runner/.fly/bin:$PATH"
           flyctl version || { echo "flyctl installation failed"; exit 1; }
+          # Debug: Verify flyctl is in PATH
+          which flyctl
+          ls -l /home/runner/.fly/bin/flyctl
 
       - name: Deploy User Service to Fly.io
         run: |
