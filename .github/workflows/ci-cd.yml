@@ -54,7 +54,9 @@ jobs:
 
       - name: Install Fly CLI
         run: |
-          curl -L https://github.com/superfly/flyctl/releases/latest/download/flyctl_Linux_x86_64.tar.gz -o flyctl.tar.gz
+          curl -L -o flyctl.tar.gz https://github.com/superfly/flyctl/releases/download/v0.2.171/flyctl_0.2.171_Linux_x86_64.tar.gz
+          ls -l flyctl.tar.gz
+          file flyctl.tar.gz
           tar -xzf flyctl.tar.gz
           sudo mv flyctl /usr/local/bin/flyctl
           rm flyctl.tar.gz
