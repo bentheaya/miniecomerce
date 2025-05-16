@@ -48,17 +48,19 @@ jobs:
   deploy:
     needs: build-and-test
     runs-on: ubuntu-latest
+    env:
+      PATH: "/home/runner/.fly/bin:$PATH"
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Install Fly CLI
         run: |
-          curl -L https://fly.io/install.sh | sh -s -- -b /usr/local/bin
+          curl -L https://fly.io/install.sh | sh
           flyctl version || { echo "flyctl installation failed"; exit 1; }
-          # Debug: Verify flyctl is in /usr/local/bin
+          # Debug: Verify flyctl is in PATH
           which flyctl
-          ls -l /usr/local/bin/flyctl
+          ls -l /home/runner/.fly/bin/flyctl
 
       - name: Deploy User Service to Fly.io
         run: |
