@@ -54,8 +54,8 @@ jobs:
 
       - name: Install Fly CLI
         run: |
-          curl -L https://fly.io/install.sh | sh
-          export PATH="$HOME/.fly/bin:$PATH"
+          curl -L https://fly.io/install.sh | sh -s -- -b /usr/local/bin
+          flyctl version || { echo "flyctl installation failed"; exit 1; }
 
       - name: Deploy User Service to Fly.io
         run: |
